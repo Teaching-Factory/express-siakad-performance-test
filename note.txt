@@ -1,0 +1,4 @@
+npm install k6
+npm install --save-dev @types/k6
+k6 new src/folder-path/file-name.js
+k6 run src/folder-path/file-name.js
