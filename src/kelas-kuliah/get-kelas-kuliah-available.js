@@ -2,34 +2,24 @@ import http from "k6/http";
 import { sleep } from "k6";
 
 export const options = {
-  // A number specifying the number of VUs to run concurrently.
-  vus: 10,
-  // A string specifying the total duration of the test run.
-  duration: "30s",
+  stages: [
+    { duration: "3m", target: 300 },
+    { duration: "3m", target: 300 },
+    { duration: "3m", target: 0 },
+  ],
 };
 
 // import env
 const env = JSON.parse(open("./../../.env"));
 
+// declare token
+const authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiIyMzEzMjAxMDAwMDYyIiwiZGF0YV9yb2xlcyI6WyJtYWhhc2lzd2EiXSwiaWF0IjoxNzIxOTc5MTMwLCJleHAiOjE3MjIwMjIzMzB9.G64hwTcMEagSKrw7AsWm7p00X4xFsFYEKPWNrRjQ9kc";
+
 export default function () {
-  // Step 1: Process Login
-  const loginPayload = JSON.stringify({
-    username: "2313201000062",
-    password: "23122001",
-  });
-
-  const loginHeaders = { "Content-Type": "application/json" };
-
-  const loginRes = http.post(`${env.BASE_URL}:${env.PORT}/auth/do-login`, loginPayload, { headers: loginHeaders });
-
-  const authToken = loginRes.json("token");
-
-  // Step 2: Run API
   const apiHeaders = {
     Authorization: `${authToken}`,
   };
 
   http.get(`${env.BASE_URL}:${env.PORT}/kelas-kuliah/get-kelas-kuliah-available`, { headers: apiHeaders });
-
   sleep(1);
 }

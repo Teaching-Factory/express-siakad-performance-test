@@ -20,6 +20,6 @@ export default function () {
     Authorization: `${authToken}`,
   };
 
-  http.get(`${env.BASE_URL}:${env.PORT}/kelas-kuliah/get-kelas-kuliah-available`, { headers: apiHeaders });
+  http.get(`${env.BASE_URL}:${env.PORT}/tagihan-mahasiswa/get-tagihan-by-mahasiswa-active`, { headers: apiHeaders });
   sleep(1);
 }

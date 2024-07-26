@@ -14,12 +14,13 @@ const env = JSON.parse(open("./../../.env"));
 
 // declare token
 const authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiIyMzEzMjAxMDAwMDYyIiwiZGF0YV9yb2xlcyI6WyJtYWhhc2lzd2EiXSwiaWF0IjoxNzIxOTc5MTMwLCJleHAiOjE3MjIwMjIzMzB9.G64hwTcMEagSKrw7AsWm7p00X4xFsFYEKPWNrRjQ9kc";
+const semesterId = "20232";
 
 export default function () {
   const apiHeaders = {
     Authorization: `${authToken}`,
   };
 
-  http.get(`${env.BASE_URL}:${env.PORT}/kelas-kuliah/get-kelas-kuliah-available`, { headers: apiHeaders });
+  http.get(`${env.BASE_URL}:${env.PORT}/rekap-jadwal-kuliah/${semesterId}/get-rekap-jadwal-kuliah-by-semester`, { headers: apiHeaders });
   sleep(1);
 }
