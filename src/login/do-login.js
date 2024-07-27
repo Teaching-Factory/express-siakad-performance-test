@@ -3,9 +3,9 @@ import { check, sleep } from "k6";
 
 export const options = {
   stages: [
-    { duration: "3m", target: 300 },
-    { duration: "3m", target: 300 },
-    { duration: "3m", target: 0 },
+    { duration: "2m", target: 300 },
+    { duration: "1m", target: 300 },
+    { duration: "2m", target: 0 },
   ],
 };
 
@@ -20,6 +20,9 @@ export default function () {
 
   const loginHeaders = { "Content-Type": "application/json" };
 
-  http.post(`${env.BASE_URL}:${env.PORT}/auth/do-login`, loginPayload, { headers: loginHeaders });
+  const res = http.post(`${env.BASE_URL}:${env.PORT}/auth/do-login`, loginPayload, { headers: loginHeaders });
+  check(res, {
+    "status was 200": (r) => r.status === 200,
+  });
   sleep(1);
 }

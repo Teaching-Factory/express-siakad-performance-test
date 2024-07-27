@@ -1,11 +1,11 @@
 import http from "k6/http";
-import { sleep } from "k6";
+import { check, sleep } from "k6";
 
 export const options = {
   stages: [
-    { duration: "3m", target: 300 },
-    { duration: "3m", target: 300 },
-    { duration: "3m", target: 0 },
+    { duration: "2m", target: 300 },
+    { duration: "1m", target: 300 },
+    { duration: "2m", target: 0 },
   ],
 };
 
@@ -13,13 +13,16 @@ export const options = {
 const env = JSON.parse(open("./../../.env"));
 
 // declare token
-const authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiIyMzEzMjAxMDAwMDYyIiwiZGF0YV9yb2xlcyI6WyJtYWhhc2lzd2EiXSwiaWF0IjoxNzIxOTc5MTMwLCJleHAiOjE3MjIwMjIzMzB9.G64hwTcMEagSKrw7AsWm7p00X4xFsFYEKPWNrRjQ9kc";
+const authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiIyMzEzMjAxMDAwMDYyIiwiZGF0YV9yb2xlcyI6WyJtYWhhc2lzd2EiXSwiaWF0IjoxNzIyMDUzMTAwLCJleHAiOjE3MjIwOTYzMDB9._Tr_UEO0rFexkpAVtJB3h2Onf3fFW_VJ9y5eukeipMM";
 
 export default function () {
   const apiHeaders = {
     Authorization: `${authToken}`,
   };
 
-  http.get(`${env.BASE_URL}:${env.PORT}/kelas-kuliah/get-kelas-kuliah-available`, { headers: apiHeaders });
+  const res = http.get(`${env.BASE_URL}:${env.PORT}/kelas-kuliah/get-kelas-kuliah-available`, { headers: apiHeaders });
+  check(res, {
+    "status was 200": (r) => r.status === 200,
+  });
   sleep(1);
 }
