@@ -7,6 +7,14 @@ export const options = {
     { duration: "1m", target: 300 },
     { duration: "2m", target: 0 },
   ],
+
+  // stages: [
+  //   { duration: "1m", target: 50 },
+  //   { duration: "2m", target: 100 },
+  //   { duration: "1m", target: 150 },
+  //   { duration: "2m", target: 200 },
+  //   { duration: "1m", target: 0 },
+  // ],
 };
 
 // import env
@@ -14,8 +22,8 @@ const env = JSON.parse(open("./../../.env"));
 
 export default function () {
   const loginPayload = JSON.stringify({
-    username: "2313201000062",
-    password: "23122001",
+    username: `${env.USERNAME}`,
+    password: `${env.PASSWORD}`,
   });
 
   const loginHeaders = { "Content-Type": "application/json" };
