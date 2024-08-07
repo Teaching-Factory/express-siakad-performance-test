@@ -3,8 +3,8 @@ import { check, sleep } from "k6";
 
 export const options = {
   stages: [
-    { duration: "2m", target: 300 },
-    { duration: "1m", target: 300 },
+    { duration: "2m", target: 680 },
+    { duration: "1m", target: 680 },
     { duration: "2m", target: 0 },
   ],
 
@@ -21,7 +21,7 @@ export const options = {
 const env = JSON.parse(open("./../../.env"));
 
 // declare token
-const authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiIyMzEzMjAxMDAwMDYyIiwiZGF0YV9yb2xlcyI6WyJtYWhhc2lzd2EiXSwiaWF0IjoxNzIyNTY4ODk4LCJleHAiOjE3MjI2MTIwOTh9.qQVzYVTjyus9C1nBGhhdUxa2Gu_5ocNL2VHhUkJSpoQ";
+const authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiIyMzEzMjAxMDAwMDYyIiwiZGF0YV9yb2xlcyI6WyJtYWhhc2lzd2EiXSwiaWF0IjoxNzIzMDAxMDM0LCJleHAiOjE3MjMwNDQyMzR9.Wzu0yQCwuqIstEPBlGCznAg1bUafEZfaahfXuWTlMpo";
 const semesterId = "20232";
 
 export default function () {

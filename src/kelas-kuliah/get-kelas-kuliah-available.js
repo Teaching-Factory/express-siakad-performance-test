@@ -3,8 +3,8 @@ import { check, sleep } from "k6";
 
 export const options = {
   stages: [
-    { duration: "2m", target: 300 },
-    { duration: "1m", target: 300 },
+    { duration: "2m", target: 360 },
+    { duration: "1m", target: 360 },
     { duration: "2m", target: 0 },
   ],
 
@@ -21,7 +21,7 @@ export const options = {
 const env = JSON.parse(open("./../../.env"));
 
 // declare token
-const authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiIyMzEzMjAxMDAwMDYyIiwiZGF0YV9yb2xlcyI6WyJtYWhhc2lzd2EiXSwiaWF0IjoxNzIyNDgxNzUyLCJleHAiOjE3MjI1MjQ5NTJ9.f1JFcD-MxJBiZUejoM5saz6BNK_919GBWKnSYtO6SaQ";
+const authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiIyMzEzMjAxMDAwMDYyIiwiZGF0YV9yb2xlcyI6WyJtYWhhc2lzd2EiXSwiaWF0IjoxNzIyOTI5NzQyLCJleHAiOjE3MjI5NzI5NDJ9.mLnor969L3AyoBNHNEl0hu_6m9t0HLg_JkLeRmdk3ZU";
 
 export default function () {
   const apiHeaders = {
