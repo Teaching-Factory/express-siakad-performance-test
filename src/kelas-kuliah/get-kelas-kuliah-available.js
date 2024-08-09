@@ -21,7 +21,7 @@ export const options = {
 const env = JSON.parse(open("./../../.env"));
 
 // declare token
-const authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiIyMzEzMjAxMDAwMDYyIiwiZGF0YV9yb2xlcyI6WyJtYWhhc2lzd2EiXSwiaWF0IjoxNzIyOTI5NzQyLCJleHAiOjE3MjI5NzI5NDJ9.mLnor969L3AyoBNHNEl0hu_6m9t0HLg_JkLeRmdk3ZU";
+const authToken = `${env.TOKEN}`;
 
 export default function () {
   const apiHeaders = {

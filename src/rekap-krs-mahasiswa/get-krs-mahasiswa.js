@@ -21,7 +21,7 @@ export const options = {
 const env = JSON.parse(open("./../../.env"));
 
 // declare token
-const authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiIyMzEzMjAxMDAwMDYyIiwiZGF0YV9yb2xlcyI6WyJtYWhhc2lzd2EiXSwiaWF0IjoxNzIzMDAxMDM0LCJleHAiOjE3MjMwNDQyMzR9.Wzu0yQCwuqIstEPBlGCznAg1bUafEZfaahfXuWTlMpo";
+const authToken = `${env.TOKEN}`;
 const semesterId = "20232";
 
 export default function () {
